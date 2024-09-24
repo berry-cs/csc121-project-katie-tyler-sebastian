@@ -1,4 +1,9 @@
 
+
+
+/**
+ * Posn class
+ */
 public class Posn {
     int x;
     int y;
@@ -24,6 +29,19 @@ public int moveX() {
  */
 public int moveY() {
 	return y;
+}
+
+/**
+ * wall class
+ * 
+ */
+
+public class wall {
+	Posn posn;
+	
+	public wall(Posn posn) {
+		this.posn = posn;
+	}
 }
 
 }
