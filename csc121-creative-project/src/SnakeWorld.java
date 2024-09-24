@@ -8,29 +8,18 @@ import processing.event.MouseEvent;
  */
 public class SnakeWorld implements IWorld {
 
-	int x;      //the position of the circle
-	int y;
+	Posn posn;
+	String dir;
+	boolean alive;
 	
-	SnakeWorld(int x, int y) {
+	SnakeWorld(Posn posn, String dir, boolean alive) {
 		super();
-		this.x = x;
-		this.y = y;
+		this.posn = posn;
+		this.dir = dir;
+		this.alive = alive;
+	
 	}
-	@Override
-	public int hashCode() {
-		return Objects.hash(x, y);
-	}
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		SnakeWorld other = (SnakeWorld) obj;
-		return x == other.x && y == other.y;
-	}
+	
 	
 	
 	/* 
@@ -49,9 +38,26 @@ public class SnakeWorld implements IWorld {
 		} else {return this;}
 	}
 	
-	public IWorld mousePressed(MouseEvent mev) { return this; }
+
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(alive, dir);
+	}
+
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		SnakeWorld other = (SnakeWorld) obj;
+		return alive == other.alive && Objects.equals(dir, other.dir);
+	}
 
 }
-public class SnakeWorld {
 
-}
