@@ -22,7 +22,7 @@ public class SnakeWorld implements IWorld {
 	
 	
 	/* 
-	 * draw a picture with the circle at this worlds (x, y)
+	 * draw a picture with a snake segment at this worlds (x, y)
 	 */
 	public PApplet draw(PApplet w) { 
 		w.background(255);
