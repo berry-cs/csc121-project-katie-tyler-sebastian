@@ -1,7 +1,6 @@
 import java.util.Objects;
 
 import processing.core.PApplet;
-import processing.event.MouseEvent;
 
 /**
  * represent the state of my falling circle animation.
@@ -27,15 +26,13 @@ public class SnakeWorld implements IWorld {
 	 */
 	public PApplet draw(PApplet w) { 
 		w.background(255);
-		w.fill(0, 0, 255);
-		w.circle(this.x, this.y, 15);
+		w.fill(0,0,255);
+		w.square(this.posn.x, this.posn.y, 10);
 		return w;
 		}
 	
 	public IWorld update() {
-		if (this.y < 400) {
-			return new SnakeWorld(this.x, this.y +1);
-		} else {return this;}
+		return this;
 	}
 	
 
