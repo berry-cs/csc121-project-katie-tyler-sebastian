@@ -12,7 +12,7 @@ public class SnakeApp extends PApplet {	// <----- 1. rename AppTemplate everywhe
     }
     
     public void setup() {
-        //w = new WORLD(..........)   	<----- 2. create your initial world object
+       w = new SnakeWorld(new Posn(200, 200), "Right", true);
     }
     
     public void draw() {
