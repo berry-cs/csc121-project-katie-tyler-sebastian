@@ -15,6 +15,7 @@ public class AppleWorld implements IWorld {
  }
  
  public PApplet draw(PApplet z) { 
+	 	z.fill(225, 0, 0);
 		z.circle(this.posn.x, this.posn.y, 10);
 		return z;
 		}
