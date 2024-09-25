@@ -3,11 +3,11 @@
  */
 
 
-public class Apple {
+public class AppleWorld {
  Posn posn;
  boolean eaten;
  
- public Apple(Posn posn, boolean eaten) {
+ public AppleWorld(Posn posn, boolean eaten) {
  this.posn = posn;
  this.eaten = eaten;
  }
