@@ -32,7 +32,9 @@ public class SnakeWorld implements IWorld {
 		}
 	
 	public IWorld update() {
-		return this;
+		if (this.posn.x < 400) {
+			return new SnakeWorld(new Posn(this.posn.x + 10, this.posn.y), "right", true);
+		} else {return this;}
 	}
 	
 
