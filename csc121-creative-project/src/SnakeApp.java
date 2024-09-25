@@ -6,18 +6,22 @@ import processing.event.*;
  */
 public class SnakeApp extends PApplet {	// <----- 1. rename AppTemplate everywhere in this file
     IWorld w;
+    IWorld z;
     
     public void settings() {
         this.size(400, 400);
     }
     
     public void setup() {
-       w = new SnakeWorld(new Posn(200, 200), "Right", true);
+       w = new SnakeWorld(new Posn(0, 200), "Right", true);
+       z = new AppleWorld(new Posn(200, 100), false);
     }
     
     public void draw() {
         w = w.update();
+        z = z.update();
         w.draw(this);
+        z.draw(this);
     }
     
     @Override

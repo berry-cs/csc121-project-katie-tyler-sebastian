@@ -14,9 +14,9 @@ public class AppleWorld implements IWorld {
  this.eaten = eaten;
  }
  
- public PApplet draw(PApplet w) { 
-		w.circle(this.posn.x, this.posn.y, 10);
-		return w;
+ public PApplet draw(PApplet z) { 
+		z.circle(this.posn.x, this.posn.y, 10);
+		return z;
 		}
 	
 	public IWorld update(SnakeWorld s) {
