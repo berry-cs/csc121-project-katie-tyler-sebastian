@@ -19,7 +19,7 @@ public class SnakeApp extends PApplet {	// <----- 1. rename AppTemplate everywhe
     
     public void draw() {
         w = w.update();
-        z = z.update();
+        z = ((AppleWorld) z).update((SnakeWorld) w);
         w.draw(this);
         z.draw(this);
     }
