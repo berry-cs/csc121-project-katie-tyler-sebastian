@@ -66,8 +66,18 @@ public class SnakeApp extends PApplet {	// <----- 1. rename AppTemplate everywhe
 
     @Override
     public void keyPressed(KeyEvent kev) {
-        w = w.keyPressed(kev);
+        if (kev.getKeyCode() == PApplet.RIGHT) {
+            w = new SnakeWorld(((SnakeWorld) w).posn, "right", true);
+        } else if (kev.getKeyCode() == PApplet.LEFT) {
+            w = new SnakeWorld(((SnakeWorld) w).posn, "left", true);
+        } else if (kev.getKeyCode() == PApplet.UP) {
+            w = new SnakeWorld(((SnakeWorld) w).posn, "up", true);
+        } else if (kev.getKeyCode() == PApplet.DOWN) {
+            w = new SnakeWorld(((SnakeWorld) w).posn, "down", true);
+        }
     }
+
+
 
     @Override
     public void keyReleased(KeyEvent kev) {
