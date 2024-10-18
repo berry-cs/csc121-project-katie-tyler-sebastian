@@ -32,20 +32,47 @@ public class SnakeWorld implements IWorld {
 		}
 	
 	public IWorld update() {
-        if (this.dir.equals("right") && this.posn.x < 390) {
-            return new SnakeWorld(new Posn(this.posn.x + 3, this.posn.y), "right", true);
-        } 
-        else if (this.dir.equals("left") && this.posn.x > 0) {
-            return new SnakeWorld(new Posn(this.posn.x - 3, this.posn.y), "left", true);
-        } 
-        else if (this.dir.equals("up") && this.posn.y > 0) {
-            return new SnakeWorld(new Posn(this.posn.x, this.posn.y - 3), "up", true);
-        } 
-        else if (this.dir.equals("down") && this.posn.y < 390) {
-            return new SnakeWorld(new Posn(this.posn.x, this.posn.y + 3), "down", true);
-        }
-        return this; 
-    }
+		
+		if (!this.alive) {
+			return this;
+		}
+		
+		int newX = this.posn.x;
+	    int newY = this.posn.y;
+
+	    if (this.dir.equals("right")) {
+	        newX += 3;
+	    } 
+	    else if (this.dir.equals("left")) {
+	        newX -= 3;
+	    } 
+	    else if (this.dir.equals("up")) {
+	        newY -= 3;
+	    } 
+	    else if (this.dir.equals("down")) {
+	        newY += 3;
+	    }
+
+	    
+	    if (newX < 0) {
+	        return new SnakeWorld(this.posn, this.dir, false);
+	    }
+	    else if (newX >= 400) {
+	    	 return new SnakeWorld(this.posn, this.dir, false);
+	     }
+	    else if (newY < 0) {
+	    	 return new SnakeWorld(this.posn, this.dir, false);
+	     }	 
+	    else if (newY >= 400) {
+	    	 return new SnakeWorld(this.posn, this.dir, false);
+	     }
+	     
+	    
+
+	    
+	    return new SnakeWorld(new Posn(newX, newY), this.dir, true);
+	}
+ 
 	
 
 

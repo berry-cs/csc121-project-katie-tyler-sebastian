@@ -13,15 +13,23 @@ public class SnakeApp extends PApplet {	// <----- 1. rename AppTemplate everywhe
     }
     
     public void setup() {
-       w = new SnakeWorld(new Posn(0, 200), "Right", true);
+       w = new SnakeWorld(new Posn(200, 200), "Right", true);
        z = new AppleWorld(new Posn(200, 100), false);
     }
     
     public void draw() {
+    	if (((SnakeWorld) w).alive) {
         w = w.update();
         z = ((AppleWorld) z).update((SnakeWorld) w);
         w.draw(this);
         z.draw(this);
+    } else {
+    	background(0); // Clear the screen
+        fill(255, 0, 0); // Set the text color to red
+        textSize(32);
+        textAlign(CENTER, CENTER);
+        text("Game Over", width / 2, height / 2);
+    }
     }
     
     @Override
