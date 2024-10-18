@@ -53,22 +53,20 @@ public class SnakeWorld implements IWorld {
 	        newY += 3;
 	    }
 
+	    // this part checks to see if the snake has hit the border
 	    
-	    if (newX < 0) {
+	    if (newX <= 0) {
 	        return new SnakeWorld(this.posn, this.dir, false);
 	    }
 	    else if (newX >= 400) {
 	    	 return new SnakeWorld(this.posn, this.dir, false);
 	     }
-	    else if (newY < 0) {
+	    else if (newY <= 0) {
 	    	 return new SnakeWorld(this.posn, this.dir, false);
 	     }	 
 	    else if (newY >= 400) {
 	    	 return new SnakeWorld(this.posn, this.dir, false);
 	     }
-	     
-	    
-
 	    
 	    return new SnakeWorld(new Posn(newX, newY), this.dir, true);
 	}
