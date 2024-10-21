@@ -24,8 +24,8 @@ public class SnakeApp extends PApplet {	// <----- 1. rename AppTemplate everywhe
         w.draw(this);
         z.draw(this);
     } else {
-    	background(0); // Clear the screen
-        fill(255, 0, 0); // Set the text color to red
+    	background(0); 
+        fill(255, 0, 0);
         textSize(32);
         textAlign(CENTER, CENTER);
         text("Game Over", width / 2, height / 2);

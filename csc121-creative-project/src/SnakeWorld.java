@@ -39,6 +39,8 @@ public class SnakeWorld implements IWorld {
 		
 		int newX = this.posn.x;
 	    int newY = this.posn.y;
+	    
+	    // snake speed
 
 	    if (this.dir.equals("right")) {
 	        newX += 3;
