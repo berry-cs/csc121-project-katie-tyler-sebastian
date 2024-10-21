@@ -33,7 +33,7 @@ public class SnakeWorld implements IWorld {
 	
 	public IWorld update() {
 		
-		if (!this.alive) {
+		if (this.alive == false) {
 			return this;
 		}
 		
@@ -70,13 +70,12 @@ public class SnakeWorld implements IWorld {
 	    
 	    return new SnakeWorld(new Posn(newX, newY), this.dir, true);
 	}
- 
-	
+
 
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(alive, dir);
+		return Objects.hash(alive, dir, posn);
 	}
 
 
@@ -90,8 +89,11 @@ public class SnakeWorld implements IWorld {
 		if (getClass() != obj.getClass())
 			return false;
 		SnakeWorld other = (SnakeWorld) obj;
-		return alive == other.alive && Objects.equals(dir, other.dir);
-	}
+		return alive == other.alive && Objects.equals(dir, other.dir) && Objects.equals(posn, other.posn);
+	}}
+ 
+	
 
-}
+
+	
 
