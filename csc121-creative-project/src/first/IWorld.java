@@ -1,3 +1,4 @@
+package first;
 import processing.core.PApplet;
 import processing.event.KeyEvent;
 import processing.event.MouseEvent;

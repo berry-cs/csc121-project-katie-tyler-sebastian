@@ -1,3 +1,4 @@
+package first;
 import processing.core.PApplet;
 import java.util.Random;
 
