@@ -21,8 +21,9 @@ public class SnakeWorld implements IWorld {
 	
 	/** produce a visual rendering of this world on the given window */
 	public PApplet draw(PApplet w) { 
+		w.background(255);
 		snake.draw(w);
-		//apple.draw(w);
+		apple.draw(w);
 		
 		return w;
 	}
@@ -37,7 +38,7 @@ public class SnakeWorld implements IWorld {
         } else if (kev.getKeyCode() == PApplet.LEFT) {
             snake = snake.changeDirection(new Posn(-1, 0)); 
         } else if (kev.getKeyCode() == PApplet.RIGHT) {
-            snake = snake.changeDirection(new Posn(1, 0)); 
+            snake = snake.changeDirection(new Posn(1, 0)); // move right
         }
         return this;
     }

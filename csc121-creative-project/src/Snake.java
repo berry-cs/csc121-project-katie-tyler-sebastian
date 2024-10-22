@@ -17,7 +17,6 @@ public class Snake {
 
 
 	public PApplet draw(PApplet w) { 
-		w.background(255);
 		w.fill(0,255,0);
 		w.square(this.posn.x, this.posn.y, 10);
 		return w;
