@@ -1,3 +1,4 @@
+import first.SnakeWorld;
 import processing.core.PApplet;
 
 public class Snake {
@@ -31,5 +32,22 @@ public class Snake {
 	public Snake changeDirection(Posn newDir) {
         return new Snake(this.posn, newDir, this.alive);
     }
+	
+	public boolean borderHit(int width, int height) {
+		if (posn.x <= 0) {
+	        return this.alive = false;
+	    }
+	    else if (posn.y >= width) {
+	    	return this.alive = false;
+	     }
+	    else if (posn.y <= 0) {
+	    	return this.alive = false;
+	     }	 
+	    else if (posn.y >= height) {
+	    	return this.alive = false;
+	     }
+	    
+		return this.alive = true;
+	}
 
 }

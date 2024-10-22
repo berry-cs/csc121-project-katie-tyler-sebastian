@@ -5,17 +5,25 @@ public class SnakeWorld implements IWorld {
 
 	Snake snake;
 	Apple apple;
+	boolean gameOver;
 	
 	
-	SnakeWorld(Snake snake, Apple apple) {
+	SnakeWorld(Snake snake, Apple apple, boolean gameOver) {
 		this.snake = snake;
 		this.apple = apple;
+		this.gameOver = gameOver;
 	}
 	
 	
 	/** produce an updated state of this world after one time tick */
 	public IWorld update() { 
-		return new SnakeWorld(snake.move(), apple);
+		
+            // Check if the snake has hit the border
+            if (snake.borderHit(400, 400)) {
+                gameOver = true;
+            }
+    
+		return new SnakeWorld(snake.move(), apple, false);
 	}
 
 	
