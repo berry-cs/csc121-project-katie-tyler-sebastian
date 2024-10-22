@@ -30,8 +30,17 @@ public class SnakeWorld implements IWorld {
 
 	/** produce an updated state of this world after a key press event */
 	public IWorld keyPressed(KeyEvent kev) { 
-		return this;
-		}
+        if (kev.getKeyCode() == PApplet.UP) {
+            snake = snake.changeDirection(new Posn(0, -1)); 
+        } else if (kev.getKeyCode() == PApplet.DOWN) {
+            snake = snake.changeDirection(new Posn(0, 1)); 
+        } else if (kev.getKeyCode() == PApplet.LEFT) {
+            snake = snake.changeDirection(new Posn(-1, 0)); 
+        } else if (kev.getKeyCode() == PApplet.RIGHT) {
+            snake = snake.changeDirection(new Posn(1, 0)); 
+        }
+        return this;
+    }
 
 
 	

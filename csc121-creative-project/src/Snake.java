@@ -28,5 +28,8 @@ public class Snake {
 		Posn newPosn = posn.translate( dir.scale(3) );
 		return new Snake(newPosn, dir, alive);
 	}
+	public Snake changeDirection(Posn newDir) {
+        return new Snake(this.posn, newDir, this.alive);
+    }
 
 }
