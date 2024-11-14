@@ -4,11 +4,13 @@ import processing.event.KeyEvent;
 public class SnakeWorld implements IWorld {
     Snake snake;
     Apple apple;
+    Score score;
     boolean gameOver;  // Game over flag
 
-    SnakeWorld(Snake snake, Apple apple) {
+    SnakeWorld(Snake snake, Apple apple, Score score) {
         this.snake = snake;
         this.apple = apple;
+        this.score = score;
         this.gameOver = false;  // Start with game not over
     }
 
@@ -18,7 +20,9 @@ public class SnakeWorld implements IWorld {
             snake = snake.move();
             if (snake.posn.distanceTo(apple.posn) < 10) {
                 apple = apple.regenerate(398, 398);
+                score.incrementScore(1);
             }
+
             if (isOutOfBounds(snake)) {
                 gameOver = true;
             }
@@ -34,25 +38,28 @@ public class SnakeWorld implements IWorld {
             w.fill(0, 0, 255);  
             w.textSize(32);
             w.textAlign(PApplet.CENTER, PApplet.CENTER);
-            w.text("Game Over", w.width / 2, w.height / 2);  
+            w.text("Game Over", w.width / 2, w.height / 2 - 40);  
             w.textSize(16);
-            w.text("Press ENTER to restart", w.width / 2, w.height / 2 + 40);  
+            w.text("Press ENTER to restart", w.width / 2, w.height / 2 ); 
+            w.text("Final Score: " + score.getScore(), w.width / 2, w.height / 2 +30);
+            w.text("High Score: " + score.getHighScore(), w.width / 2, w.height / 2 + 50);
         } else {
             w.background(255); 
             snake.draw(w);
             apple.draw(w);
+            score.displayScores(w);
         }
         return w;
     }
     private boolean isOutOfBounds(Snake snake) {
-        return (snake.posn.x < 0 || snake.posn.x >= 398 || snake.posn.y < 0 || snake.posn.y >= 398);
+        return (snake.posn.x < 0 || snake.posn.x >= 390 || snake.posn.y < 0 || snake.posn.y >= 390);
     }
 
     public IWorld keyPressed(KeyEvent kev) {
         if (gameOver) {
             if (kev.getKeyCode() == PApplet.ENTER) {
                 // Restart the game with a new snake and apple
-                return new SnakeWorld(new Snake(new Posn(200, 200), new Posn(1, 0), true), new Apple(new Posn(100, 100)));
+                return new SnakeWorld(new Snake(new Posn(200, 200), new Posn(1, 0), true), new Apple(new Posn(100, 100)), this.score.resetScore(), false);
             }
         } else {
             if (kev.getKeyCode() == PApplet.UP) {
@@ -75,9 +82,10 @@ public class SnakeWorld implements IWorld {
     }
 
     // Overloaded constructor to keep the gameOver state
-    SnakeWorld(Snake snake, Apple apple, boolean gameOver) {
+    SnakeWorld(Snake snake, Apple apple, Score score, boolean gameOver) {
         this.snake = snake;
         this.apple = apple;
+        this.score = score;
         this.gameOver = gameOver;
     }
 }
