@@ -7,8 +7,10 @@ import processing.event.*;
 public class SnakeApp extends PApplet {	// <----- 1. rename AppTemplate everywhere in this file
     IWorld w;
     
+    public static final int SCN_WIDTH = 400;
+    
     public void settings() {
-        this.size(400, 400);
+        this.size(SnakeApp.SCN_WIDTH, 400);
     }
     
     public void setup() {

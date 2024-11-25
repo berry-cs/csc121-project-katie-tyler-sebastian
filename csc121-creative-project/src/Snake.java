@@ -17,6 +17,7 @@ public class Snake {
     // Draw the snake by drawing each segment in the body list
     public PApplet draw(PApplet w) { 
         w.fill(0, 255, 0);
+        w.rectMode(PApplet.CENTER);
         for (Posn segment : body) {
             w.square(segment.x, segment.y, 10);
         }
