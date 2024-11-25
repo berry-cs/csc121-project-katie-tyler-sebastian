@@ -8,6 +8,7 @@ public class SnakeApp extends PApplet {	// <----- 1. rename AppTemplate everywhe
     IWorld w;
     
     public static final int SCN_WIDTH = 400;
+    public static final int GRID_SIZE = 10;
     
     public void settings() {
         this.size(SnakeApp.SCN_WIDTH, 400);
