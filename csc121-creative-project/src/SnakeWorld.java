@@ -39,7 +39,7 @@ public class SnakeWorld implements IWorld {
             w.textSize(16);
             w.text("Press ENTER to restart", w.width / 2, w.height / 2 + 40);
         } else {
-            w.background(255);
+            w.background(144,238,144);
             snake.draw(w);
             apple.draw(w);
         }
