@@ -33,13 +33,14 @@ public class Score {
         return highScore;
     }
 
-    // Display the score and high score
-    public void displayScores(PApplet app) {
-        app.fill(0, 0, 0); 
-        app.textSize(15);
-        app.text("Score: " + score, 10, 20);
-        app.text("High Score: " + highScore, 10, 40);
-    }
+// Display the score 
+	public void draw(PApplet w) {
+		w.fill(0, 0, 0); 
+        w.textSize(15);
+        w.textAlign(50,50);
+        w.text("Score: " + score, 10, 20);
+
+	}
 }
 
 

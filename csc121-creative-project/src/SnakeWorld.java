@@ -5,11 +5,13 @@ public class SnakeWorld implements IWorld {
     Snake snake;
     Apple apple;
     boolean gameOver;
+    Score score; 
 
-    SnakeWorld(Snake snake, Apple apple) {
+    SnakeWorld(Snake snake, Apple apple, boolean gameOver, Score score) {
         this.snake = snake;
         this.apple = apple;
         this.gameOver = false;
+        this.score = score;
     }
 
     int frameCount = 0;
@@ -21,6 +23,7 @@ public class SnakeWorld implements IWorld {
     	        if (snake.body.get(0).distanceTo(apple.posn) < 10) {
     	            apple = apple.regenerate(SnakeApp.SCN_WIDTH, 398);
     	            snake.grow(); // Grow the snake when it eats the apple
+    	            score.incrementScore(1);
     	        }
     	        if (isOutOfBounds(snake)) {
     	            gameOver = true;
@@ -36,12 +39,15 @@ public class SnakeWorld implements IWorld {
             w.textSize(32);
             w.textAlign(PApplet.CENTER, PApplet.CENTER);
             w.text("Game Over", w.width / 2, w.height / 2);
+            w.textSize(20);
+            w.text("High Score:" + this.score.getHighScore(),  w.width / 2, w.height / 2 + 30);
             w.textSize(16);
-            w.text("Press ENTER to restart", w.width / 2, w.height / 2 + 40);
+            w.text("Press ENTER to restart", w.width / 2, w.height / 2 + 50);
         } else {
             w.background(144,238,144);
             snake.draw(w);
             apple.draw(w);
+            score.draw(w);
         }
         return w;
     }
@@ -55,7 +61,7 @@ public class SnakeWorld implements IWorld {
         if (gameOver) {
             if (kev.getKeyCode() == PApplet.ENTER) {
                 // Restart the game with a new snake and apple
-                return new SnakeWorld(new Snake(new Posn(200, 200), new Posn(1, 0), true), new Apple(new Posn(100, 100)));
+                return new SnakeWorld(new Snake(new Posn(200, 200), new Posn(1, 0), true), new Apple(new Posn(200,200)), false, new Score(0, this.score.getHighScore()));
             }
         } else {
             if (kev.getKeyCode() == PApplet.UP) {
