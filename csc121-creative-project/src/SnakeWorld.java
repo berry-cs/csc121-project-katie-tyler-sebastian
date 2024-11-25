@@ -20,8 +20,8 @@ public class SnakeWorld implements IWorld {
     	    frameCount++;
     	    if (!gameOver && frameCount % 5 == 0) { // Move the snake every 5 frames
     	        snake.move();
-    	        if (snake.body.get(0).distanceTo(apple.posn) < 10) {
-    	            apple = apple.regenerate(SnakeApp.SCN_WIDTH, 398);
+    	        if (snake.body.get(0).distanceTo(apple.posn) < SnakeApp.GRID_SIZE) {
+    	            apple = apple.regenerate();
     	            snake.grow(); // Grow the snake when it eats the apple
     	            score.incrementScore(1);
     	        }
@@ -54,7 +54,7 @@ public class SnakeWorld implements IWorld {
 
     private boolean isOutOfBounds(Snake snake) {
         Posn head = snake.body.get(0);
-        return (head.x < 0 || head.x >= 398 || head.y < 0 || head.y >= 398);
+        return (head.x < 0 || head.x >= SnakeApp.SCN_WIDTH || head.y < 0 || head.y >= SnakeApp.SCN_WIDTH);
     }
 
     public IWorld keyPressed(KeyEvent kev) {

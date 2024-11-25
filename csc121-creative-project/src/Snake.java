@@ -29,7 +29,7 @@ public class Snake {
     public Snake move() {
         List<Posn> newBody = new ArrayList<>();
         // Calculate new head position
-        Posn newHead = body.get(0).translate(dir.scale(10));
+        Posn newHead = body.get(0).translate(dir.scale(SnakeApp.GRID_SIZE));
         newBody.add(newHead);
 
         // Move each segment to the position of the segment in front of it
