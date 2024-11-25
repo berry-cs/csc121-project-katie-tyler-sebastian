@@ -18,6 +18,7 @@ public class Snake {
     public PApplet draw(PApplet w) { 
         w.fill(0, 255, 0);
         w.rectMode(PApplet.CENTER);
+        w.fill(0, 100, 0);
         for (Posn segment : body) {
             w.square(segment.x, segment.y, 10);
         }
