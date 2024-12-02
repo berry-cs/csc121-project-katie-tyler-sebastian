@@ -66,7 +66,7 @@ public class Posn {
         if (getClass() != obj.getClass())
             return false;
         Posn other = (Posn) obj;
-        return x == other.x && y == other.y;
+        return this.x == other.x && this.y == other.y;
     }
 
     @Override

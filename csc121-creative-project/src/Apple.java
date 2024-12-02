@@ -1,3 +1,5 @@
+import java.util.List;
+
 import processing.core.PApplet;
 
 public class Apple {
@@ -15,9 +17,13 @@ public class Apple {
     }
 
     // Regenerate the apple at a random location within the given width and height bounds
-    public Apple regenerate() {
-        int newX = (int) (1 + (Math.random() * 39) * SnakeApp.GRID_SIZE + 10);
-        int newY = (int) (1 + (Math.random() * 39) * SnakeApp.GRID_SIZE + 10);
-        return new Apple(new Posn(newX, newY));
+    public Apple regenerate(List<Posn> snakeBody) {
+        Posn newPosn;
+        do {
+            int newX = (int) (Math.random() * SnakeApp.SCN_WIDTH / SnakeApp.GRID_SIZE) * SnakeApp.GRID_SIZE;
+            int newY = (int) (Math.random() * SnakeApp.SCN_WIDTH / SnakeApp.GRID_SIZE) * SnakeApp.GRID_SIZE;
+            newPosn = new Posn(newX, newY);
+        } while (snakeBody.contains(newPosn)); // Ensure the apple does not spawn on the snake
+        return new Apple(newPosn);
     }
 }
