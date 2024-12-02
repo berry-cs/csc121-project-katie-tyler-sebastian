@@ -25,10 +25,11 @@ public class SnakeWorld implements IWorld {
     	            snake.grow(); // Grow the snake when it eats the apple
     	            score.incrementScore(1);
     	        }
-    	        if (isOutOfBounds(snake)) {
+    	        if (isOutOfBounds(snake))  {
     	            gameOver = true;
     	            
     	        }
+    	        
     	    }
     	    return this;
     	}
@@ -58,6 +59,8 @@ public class SnakeWorld implements IWorld {
         return (head.x < 0 || head.x >= SnakeApp.SCN_WIDTH  || head.y < 0 || head.y >= SnakeApp.SCN_WIDTH );
     }
 
+    
+    
     public IWorld keyPressed(KeyEvent kev) {
         if (gameOver) {
             if (kev.getKeyCode() == PApplet.ENTER) {
