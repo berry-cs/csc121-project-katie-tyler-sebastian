@@ -55,7 +55,7 @@ public class SnakeWorld implements IWorld {
 
     private boolean isOutOfBounds(Snake snake) {
         Posn head = snake.body.get(0);
-        return (head.x < 0 || head.x >= SnakeApp.SCN_WIDTH || head.y < 0 || head.y >= SnakeApp.SCN_WIDTH);
+        return (head.x < 0 || head.x >= SnakeApp.SCN_WIDTH  || head.y < 0 || head.y >= SnakeApp.SCN_WIDTH );
     }
 
     public IWorld keyPressed(KeyEvent kev) {

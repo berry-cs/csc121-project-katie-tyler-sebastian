@@ -16,8 +16,8 @@ public class Apple {
 
     // Regenerate the apple at a random location within the given width and height bounds
     public Apple regenerate() {
-        int newX = (int) (1 + (Math.random() * 39) * SnakeApp.GRID_SIZE);
-        int newY = (int) (1 + (Math.random() * 39) * SnakeApp.GRID_SIZE);
+        int newX = (int) (1 + (Math.random() * 39) * SnakeApp.GRID_SIZE + 10);
+        int newY = (int) (1 + (Math.random() * 39) * SnakeApp.GRID_SIZE + 10);
         return new Apple(new Posn(newX, newY));
     }
 }
