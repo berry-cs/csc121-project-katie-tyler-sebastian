@@ -27,6 +27,7 @@ public class SnakeWorld implements IWorld {
     	        }
     	        if (isOutOfBounds(snake)) {
     	            gameOver = true;
+    	            
     	        }
     	    }
     	    return this;
@@ -40,7 +41,7 @@ public class SnakeWorld implements IWorld {
             w.textAlign(PApplet.CENTER, PApplet.CENTER);
             w.text("Game Over", w.width / 2, w.height / 2);
             w.textSize(20);
-            w.text("High Score:" + this.score.getHighScore(),  w.width / 2, w.height / 2 + 30);
+            w.text("High Score:" + this.score.readHighScore(),  w.width / 2, w.height / 2 + 30);
             w.textSize(16);
             w.text("Press ENTER to restart", w.width / 2, w.height / 2 + 50);
         } else {
@@ -61,7 +62,7 @@ public class SnakeWorld implements IWorld {
         if (gameOver) {
             if (kev.getKeyCode() == PApplet.ENTER) {
                 // Restart the game with a new snake and apple
-                return new SnakeWorld(new Snake(new Posn(200, 200), new Posn(1, 0), true), new Apple(new Posn(200,200)), false, new Score(0, this.score.getHighScore()));
+                return new SnakeWorld(new Snake(new Posn(200, 200), new Posn(1, 0), true), new Apple(new Posn(200,200)), false, new Score(0));
             }
         } else {
             if (kev.getKeyCode() == PApplet.UP) {
