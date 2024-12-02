@@ -20,8 +20,10 @@ public class SnakeWorld implements IWorld {
     	    frameCount++;
     	    if (!gameOver && frameCount % 5 == 0) { // Move the snake every 5 frames
     	        snake.move();
-    	        if (snake.body.get(0).distanceTo(apple.posn) < SnakeApp.GRID_SIZE) {
-    	            apple = apple.regenerate();
+    	        if (!snake.alive) {
+    	            gameOver = true;}
+    	        else if (snake.body.get(0).distanceTo(apple.posn) < SnakeApp.GRID_SIZE) {
+    	            apple = apple.regenerate(snake.body);
     	            snake.grow(); // Grow the snake when it eats the apple
     	            score.incrementScore(1);
     	        }
